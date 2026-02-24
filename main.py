@@ -113,6 +113,32 @@ def run_examples(path="examples/sample_inputs.json"):
 
     return results
 
+def compute_metrics(log_path="logs/run_logs.jsonl"):
+    total = 0
+    fallback_count = 0
+    unknown_count = 0
+
+    with open(log_path, "r", encoding="utf-8") as f:
+        for line in f:
+            total += 1
+            entry = json.loads(line)
+            output = entry["output"]
+
+            if output["next_action"] == "escalate_to_human":
+                fallback_count += 1
+
+            if output["intent"] == "unknown":
+                unknown_count += 1
+
+    if total == 0:
+        return {}
+
+    return {
+        "total_runs": total,
+        "fallback_rate": round(fallback_count / total, 3),
+        "unknown_intent_rate": round(unknown_count / total, 3)
+    }
+
 if __name__ == "__main__":
     print("LLM Support Agent Demo")
     mode = input("Choose mode: (1) single message, (2) run examples: ").strip()
@@ -122,6 +148,9 @@ if __name__ == "__main__":
         print("\nBatch Results (first 3 shown):")
         print(json.dumps(results[:3], indent=2))
         print(f"\nDone. Logged {len(results)} runs to logs/run_logs.jsonl")
+        metrics = compute_metrics()
+        print("\nMetrics:")
+        print(json.dumps(metrics, indent=2))
     else:
         user_message = input("Enter user message: ")
         result = run_pipeline(user_message)
