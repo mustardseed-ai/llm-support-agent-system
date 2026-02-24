@@ -1,6 +1,11 @@
 import json
 import os
 
+def reset_logs(path="logs/run_logs.jsonl"):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("")
+
 # ----------------------------
 # Load knowledge base
 # ----------------------------
@@ -101,6 +106,7 @@ def run_pipeline(user_input):
     return response
 
 def run_examples(path="examples/sample_inputs.json"):
+    reset_logs()
     with open(path, "r", encoding="utf-8") as f:
         examples = json.load(f)
 
