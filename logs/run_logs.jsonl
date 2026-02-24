@@ -1,0 +1,1 @@
+{"timestamp": "2026-02-24T08:48:34.540321", "input": "I sent money to the wrong number", "output": {"intent": "wrong_number", "confidence": 0.8, "next_action": "provide_guidance", "message": "If sent to the wrong number, act quickly. Check if reversal is possible based on provider policy. Gather transaction ID, time, and recipient number for escalation."}}

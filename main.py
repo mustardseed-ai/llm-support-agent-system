@@ -67,6 +67,17 @@ def validate_response(response):
 
     return True
 
+import datetime
+
+def log_response(user_input, response, path="logs/run_logs.jsonl"):
+    log_entry = {
+        "timestamp": datetime.datetime.utcnow().isoformat(),
+        "input": user_input,
+        "output": response
+    }
+
+    with open(path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(log_entry) + "\n")
 
 # ----------------------------
 # Main pipeline
@@ -95,6 +106,8 @@ if __name__ == "__main__":
     user_message = input("Enter user message: ")
 
     result = run_pipeline(user_message)
+
+    log_response(user_message, result)
 
     print("\nStructured Output:")
     print(json.dumps(result, indent=2))
