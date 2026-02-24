@@ -1,0 +1,26 @@
+[
+  {
+    "id": "failed_transfer",
+    "title": "Failed transfer",
+    "keywords": ["failed", "error", "not sent", "declined"],
+    "content": "If a transfer failed, verify balance, recipient number, and network status. If funds were deducted but the recipient did not receive, escalate with transaction reference."
+  },
+  {
+    "id": "wrong_number",
+    "title": "Sent to wrong number",
+    "keywords": ["wrong number", "mistake", "sent to", "incorrect"],
+    "content": "If sent to the wrong number, act quickly. Check if reversal is possible based on provider policy. Gather transaction ID, time, and recipient number for escalation."
+  },
+  {
+    "id": "pending_transfer",
+    "title": "Pending transfer",
+    "keywords": ["pending", "stuck", "processing", "waiting"],
+    "content": "Pending transfers may resolve automatically. If pending beyond expected time, gather transaction reference and escalate."
+  },
+  {
+    "id": "cashout_help",
+    "title": "Cashout / agent help",
+    "keywords": ["cashout", "withdraw", "agent", "float"],
+    "content": "For cashout issues, confirm agent availability and float. For failed cashouts, collect the transaction reference and escalate."
+  }
+]
