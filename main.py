@@ -71,7 +71,7 @@ import datetime
 
 def log_response(user_input, response, path="logs/run_logs.jsonl"):
     log_entry = {
-        "timestamp": datetime.datetime.utcnow().isoformat(),
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat(),
         "input": user_input,
         "output": response
     }
@@ -100,14 +100,31 @@ def run_pipeline(user_input):
 
     return response
 
+def run_examples(path="examples/sample_inputs.json"):
+    with open(path, "r", encoding="utf-8") as f:
+        examples = json.load(f)
+
+    results = []
+    for ex in examples:
+        user_input = ex["text"]
+        output = run_pipeline(user_input)
+        log_response(user_input, output)
+        results.append({"id": ex["id"], "input": user_input, "output": output})
+
+    return results
 
 if __name__ == "__main__":
     print("LLM Support Agent Demo")
-    user_message = input("Enter user message: ")
+    mode = input("Choose mode: (1) single message, (2) run examples: ").strip()
 
-    result = run_pipeline(user_message)
-
-    log_response(user_message, result)
-
-    print("\nStructured Output:")
-    print(json.dumps(result, indent=2))
+    if mode == "2":
+        results = run_examples()
+        print("\nBatch Results (first 3 shown):")
+        print(json.dumps(results[:3], indent=2))
+        print(f"\nDone. Logged {len(results)} runs to logs/run_logs.jsonl")
+    else:
+        user_message = input("Enter user message: ")
+        result = run_pipeline(user_message)
+        log_response(user_message, result)
+        print("\nStructured Output:")
+        print(json.dumps(result, indent=2))

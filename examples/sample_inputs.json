@@ -1,0 +1,22 @@
+[
+  {"id": "ex_001", "text": "My transfer failed yesterday"},
+  {"id": "ex_002", "text": "It’s stuck pending... what do I do?"},
+  {"id": "ex_003", "text": "Sent to wrong number please help"},
+  {"id": "ex_004", "text": "Nimetuma pesa wrong number"},
+  {"id": "ex_005", "text": "Money deducted but receiver not got"},
+  {"id": "ex_006", "text": "cashout imekataa kwa agent"},
+  {"id": "ex_007", "text": "withdraw failed at agent"},
+  {"id": "ex_008", "text": "it failed"},
+  {"id": "ex_009", "text": "transaction error code 504"},
+  {"id": "ex_010", "text": "I need reversal urgently"},
+  {"id": "ex_011", "text": "help pls"},
+  {"id": "ex_012", "text": "sent money but no confirmation msg"},
+  {"id": "ex_013", "text": "wrong pin? transfer refused"},
+  {"id": "ex_014", "text": "pending for long time since morning"},
+  {"id": "ex_015", "text": "I sent 5000 to 07xx by mistake"},
+  {"id": "ex_016", "text": "Bonjour, mon transfert a échoué"},
+  {"id": "ex_017", "text": "Network ilikuwa down wakati natuma"},
+  {"id": "ex_018", "text": "agent alisema hana float"},
+  {"id": "ex_019", "text": "cashout failed but money gone"},
+  {"id": "ex_020", "text": "it says declined but I have balance"}
+]
